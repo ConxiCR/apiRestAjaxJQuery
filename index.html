@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Api REST</title>
+</head>
+<body>
+    <h1>API REST</h1>
+    <div id="elements"></div>
+</body>
+    <script>
+        //1.variable a on guardarem un nou objecte
+        var xmlhttp = new XMLHttpRequest();
+        //2.variable amb el endpoint posts de la API per fer la petició
+        var url = 'https://jsonplaceholder.typicode.com/posts';
+        //3.xmlhttp.onreadystatechange per indicar que la funció readyState s'excuti quant la propietat es compleix amb uns parametres
+        //4.quant pasi transformarem l'objecte json en un objecte de javascript. Guardarem en una nova variable "myArr" que veurem per consola
+        xmlhttp.onreadystatechange = function(){
+           if(this.readyState == 4 && this.status == 200){
+               var myArr = JSON.parse(this.responseText);
+                //6.veiem la array de javascript que ens torna el servidor després de fer petició AJAX
+               console.log(myArr);
+               //14.crida a la funció myFunction dins la resposta a la petició AJAX. Li pasem la array que content tots els objectes
+               myFunction(myArr);
+           } 
+        };
+        //5.Indiquem parametres de la petició i enviem l'objecte
+        xmlhttp.open("GET", url, true);
+        xmlhttp.send();
+        //16.analisis dels valors. Es demana just després de fer la petició
+        console.log(xmlhttp);
+        
+        //7.funció per mostrar el title que ens permet recorre la array i accedir al valor de la propietat
+        function myFunction(array){
+            //8.declarem la nova funció
+            var sortida = "";
+            //9.parametres per accedir al title. Array d'objectes
+            //10.bucle for per recorrer la array desde posició 0 fins a la ultima posició de la array
+            //aumentarà el contador en 1 per cada iteració o volta que faci
+            //11.s'inclou un salt de linea per separar entre si
+            //12.igualar el valor a la variable sortida
+            for(var i = 0; i < array.length; i++){
+                sortida += array[i].title + "<br/>";
+                //15.indiquem que només ens mostri el title. Ens mostra la sortida que es veu en pantalla
+                console.log(array[i].title);
+            }
+            //13.element id concatenat amb un valor html que serà igual al valor de sortida
+            document.getElementById("elements").innerHTML = sortida;
+            
+        };
+    </script>
+</html>
