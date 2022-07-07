@@ -14,3 +14,7 @@ status: 200
 endpoint - responseURL: https://jsonplaceholder.typicode.com/posts
 withCredential: false (no hem utilitzat credencials)
 
+![image](https://user-images.githubusercontent.com/67627523/177755735-95fcc80e-219f-4a82-99cb-d7dd477c49ce.png)
+
+![image](https://user-images.githubusercontent.com/67627523/177755882-189ce696-bab1-46af-9cc2-8da2999e20d1.png)
+
